@@ -1,0 +1,323 @@
+body {
+  background: linear-gradient(135deg, #fffaf7, #f7e9ee);
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  padding: 45px;
+  border-radius: 25px;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  border: 2px solid #f4b6c2;
+}
+
+h1, h2 {
+  color: #3e6b52;
+}
+
+p {
+  color: #4a4a4a;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #f4b6c2, #8fbf9f);
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.progress {
+  position: fixed;
+  bottom: 30px;
+  display: flex;
+  gap: 16px;
+}
+
+.dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background-color: #f4b6c2;
+  transform: rotate(-45deg);
+  opacity: 0.4;
+}
+
+.dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  background-color: #f4b6c2;
+  transform: rotate(-45deg);
+  opacity: 0.4;
+}
+
+.dot::before,
+.dot::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background-color: #f4b6c2;
+  border-radius: 50%;
+}
+
+.dot::before {
+  top: -4.5px;
+  left: 0;
+}
+
+.dot::after {
+  left: 4.5px;
+  top: 0;
+}
+
+.dot.active,
+.dot.active::before,
+.dot.active::after {
+  background-color: #3e6b52;
+  opacity: 1;
+}
+
+/* Dreamy card transitions */
+
+.card {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+}
+
+.card.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.sparkle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* behind cards */
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #f4b6c2;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+  20% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Glow for active card */
+.card.active {
+  box-shadow: 0 20px 40px rgba(62, 107, 82, 0.2), 
+              0 0 60px rgba(244, 182, 194, 0.2), 
+              0 0 120px rgba(244, 182, 194, 0.1);
+  transition: box-shadow 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Optional: gentle pulsing */
+@keyframes glowPulse {
+  0% { box-shadow: 0 20px 40px rgba(62, 107, 82, 0.2), 0 0 60px rgba(244,182,194,0.2), 0 0 120px rgba(244,182,194,0.1); }
+  50% { box-shadow: 0 20px 50px rgba(62, 107, 82, 0.25), 0 0 70px rgba(244,182,194,0.25), 0 0 140px rgba(244,182,194,0.12); }
+  100% { box-shadow: 0 20px 40px rgba(62, 107, 82, 0.2), 0 0 60px rgba(244,182,194,0.2), 0 0 120px rgba(244,182,194,0.1); }
+}
+
+.card.active {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.final-sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 10; /* above everything in the card */
+}
+
+.final-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #f4b6c2;
+  border-radius: 50%;
+  opacity: 0;
+  animation: riseAndFade 2s ease forwards;
+}
+
+.final-heart {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #3e6b52;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+
+.final-heart::before,
+.final-heart::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #3e6b52;
+  border-radius: 50%;
+}
+
+.final-heart::before { top: -4px; left: 0; }
+.final-heart::after { left: 4px; top: 0; }
+
+@keyframes riseAndFade {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  20% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-60px) scale(1.2); }
+}
+
+.final-confetti {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.final-heart-confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #3e6b52;
+    transform: rotate(-45deg);
+
+}
+
+.final-heart-confetti::before,
+.final-heart-confetti::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #3e6b52;
+  border-radius: 50%;
+}
+.final-heart-confetti::before { top: -4px; left: 0; }
+.final-heart-confetti::after { left: 4px; top: 0; }
+
+@keyframes confettiBurst {
+  0% { transform: translate(0,0) rotate(0deg); opacity: 1; }
+  50% { transform: translate(var(--x), var(--y)) rotate(180deg); opacity: 1; }
+  100% { transform: translate(calc(var(--x) + var(--fallX)), calc(var(--y) + var(--fallY))) rotate(360deg); opacity: 0; }
+}
+
+.photo-game {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.game-photo {
+    max-width: 100%;
+    max-height: 45vh;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.choice-btn {
+  background: #f6e6ef;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.choice-btn:hover {
+  transform: translateY(-2px);
+  background: #f2d8e6;
+}
+
+.feedback {
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.feedback {
+  min-height: 1.5em;
+  transition: opacity 0.3s ease;
+}
+/* heart trigger for correct answers*/
+.heart {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: floatUp 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1.4);
+  }
+}

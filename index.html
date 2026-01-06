@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Jonny 💗💚</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<div class="progress">
+  <span id="dot1" class="dot active"></span>
+  <span id="dot2" class="dot"></span>
+  <span id="dot3" class="dot"></span>
+  <span id="dot4" class="dot"></span>
+  <span id="dot5" class="dot"></span>
+</div>
+
+<body>
+
+    <div class="sparkle-container"></div>
+
+  <div class="card active" id="section1">
+    <h1>My sweet Jonny 🎂</h1>
+    <p>
+      I wanted to give you something a little different for your birthday this year...
+    </p>
+    <button onclick="next()">Click Me 💌</button>
+  </div>
+
+  <div class="card" id="section2">
+    <p>
+      Being with you feels like being understood without having to explain.
+      Like warmth, steadiness, and laughter all at once.
+    </p>
+    <div class="nav-buttons">
+  <button onclick="back()">Back</button>
+  <button onclick="next()">Next</button>
+</div>
+  </div>
+
+  <div class="card" id="section3">
+    <p>
+      I love the way you exist in the world. Your intelligence, your kindness, your integrity...
+      You are nothing short of incredible!
+    </p>
+    <div class="nav-buttons">
+  <button onclick="back()">Back</button>
+  <button onclick="next()">Next</button>
+</div>
+  </div>
+
+   <div class="card" id="section4">
+  <h2>I’m so grateful I get to love you</h2>
+  <p>
+    Happy Birthday, Jonny 💚 
+    <br> Here’s to many more chapters together.
+  </p>
+
+  <div class="final-sparkle-container"></div>
+
+  <div class="nav-buttons">
+    <button onclick="back()">Back</button>
+    <button onclick="next()">Next</button>
+  </div>
+</div>
+
+<div class="card" id="section5">
+  <h2>A stroll down memory lane 💚</h2>
+
+  <p id="game-question">
+    Do you remember where this was?
+  </p>
+
+  <div class="photo-game">
+    <img id="game-photo" src="photo1.jpg" alt="A special memory of us" class="game-photo">
+
+    <div class="choices">
+      <button class="choice-btn" onclick="chooseAnswer(0)">Option 1</button>
+      <button class="choice-btn" onclick="chooseAnswer(1)">Option 2</button>
+      <button class="choice-btn" onclick="chooseAnswer(2)">Option 3</button>
+    </div>
+
+    <p class="feedback" id="game-feedback"></p>
+  </div>
+
+  <div class="nav-buttons">
+    <button onclick="back()">Back</button>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
